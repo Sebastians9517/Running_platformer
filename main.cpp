@@ -9,7 +9,7 @@ int main (){
     const int rectangle_height = 80;
     // Position and velocity
     int position_Y = (window_height - rectangle_height);
-    int velocity = -1; // This equals to 10px/frame
+    int velocity = -10; // This equals to 10px/frame
     // Initializing window
     InitWindow(window_width, window_height, "Dasher Game");
 
@@ -18,8 +18,9 @@ int main (){
         // Initializing canvas
         BeginDrawing();
         ClearBackground(WHITE);
-
-        position_Y += velocity;
+        if (IsKeyPressed(KEY_SPACE)) {
+            position_Y += velocity;
+        }
         DrawRectangle(window_width/2, position_Y, rectangle_width, rectangle_height, BLUE);
         EndDrawing();
     }
