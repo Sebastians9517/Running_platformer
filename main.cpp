@@ -7,7 +7,14 @@ int main (){
     // Initializing window
     InitWindow(window_width, window_height, "Dasher Game");
 
-
+    SetTargetFPS(60);
+    while (!WindowShouldClose()){
+        // Initializing canvas
+        BeginDrawing();
+        ClearBackground(WHITE);
+        EndDrawing();
+    }
+    CloseWindow();
     
     
 }
