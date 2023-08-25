@@ -12,6 +12,7 @@ int main (){
     // Position and velocity
     int position_Y = (window_height - rectangle_height);
     int velocity = 0; // This equals to 10px/frame
+    bool in_the_air{}; // Braced initialization defaults to a false value
     // Initializing window
     InitWindow(window_width, window_height, "Dasher Game");
 
@@ -24,13 +25,16 @@ int main (){
         BeginDrawing();
         ClearBackground(WHITE);
         // Ensuring we are not already at ground level
-        if(position_Y >= window_height - rectangle_height){
+        if((position_Y >= window_height - rectangle_height)){
             velocity = 0;
-        } else {
+            in_the_air = false;
+        } else { 
+            //if we are above ground level, gravity will take us back to the ground
             velocity += gravity;
+            in_the_air = true;
         }
         
-        if (IsKeyPressed(KEY_SPACE)) {
+        if (IsKeyPressed(KEY_SPACE) && !in_the_air) {
             // Applying gravity
             velocity -= 9.81;
         } 
