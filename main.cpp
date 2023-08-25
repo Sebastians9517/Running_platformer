@@ -11,7 +11,7 @@ int main (){
 
     // Position and velocity
     int position_Y = (window_height - rectangle_height);
-    int velocity = -10; // This equals to 10px/frame
+    int velocity = 0; // This equals to 10px/frame
     // Initializing window
     InitWindow(window_width, window_height, "Dasher Game");
 
@@ -23,10 +23,21 @@ int main (){
         // Initializing canvas
         BeginDrawing();
         ClearBackground(WHITE);
-        if (IsKeyPressed(KEY_SPACE)) {
-            // Updating position
-            position_Y += velocity;
+        // Ensuring we are not already at ground level
+        if(position_Y >= window_height - rectangle_height){
+            velocity = 0;
+        } else {
+            velocity += gravity;
         }
+        
+        if (IsKeyPressed(KEY_SPACE)) {
+            // Applying gravity
+            velocity -= 9.81;
+        } 
+
+        // Updating position
+        position_Y += velocity;
+        
         DrawRectangle(window_width/2, position_Y, rectangle_width, rectangle_height, BLUE);
         EndDrawing();
     }
