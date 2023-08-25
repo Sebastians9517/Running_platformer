@@ -34,7 +34,7 @@ int main (){
             in_the_air = true;
         }
         
-        if (IsKeyPressed(KEY_SPACE)) {
+        if (IsKeyPressed(KEY_SPACE) && !in_the_air) {
             // Applying gravity
             velocity -= 9.81;
         } 
