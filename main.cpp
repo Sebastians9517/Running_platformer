@@ -11,13 +11,14 @@ int main (){
 
     // Position and velocity
     int position_Y = (window_height - rectangle_height);
-    int velocity = 0; // This equals to 10px/frame
+    double velocity = 0; // This is given in pixels/frame
+    const int jump_velocity = -22;
     bool in_the_air{}; // Braced initialization defaults to a false value
     // Initializing window
     InitWindow(window_width, window_height, "Dasher Game");
 
     // Gravity acceleration due to gravity, given in pixels/frame^2
-    const int gravity = 1;
+    const double gravity = 0.981;
 
     SetTargetFPS(60);
     while (!WindowShouldClose()){
@@ -36,7 +37,7 @@ int main (){
         
         if (IsKeyPressed(KEY_SPACE) && !in_the_air) {
             // Applying gravity
-            velocity -= 9.81;
+            velocity += jump_velocity;
         } 
 
         // Updating position
