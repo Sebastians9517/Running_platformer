@@ -5,15 +5,12 @@ int main (){
     const int window_width = 1280;
     const int window_height = 720;
 
-    // Downward acceleration due to gravity, given in pixels/frame^2
-    const double gravity = 0.981;
-
-
+    // Downward acceleration due to gravity, given in pixels/second^2
+    const double gravity = 981;
 
     // Position and velocity
-    
-    double velocity = 0; // This is given in pixels/frame
-    const int jump_velocity = -22;
+    double velocity = 0; // This is given in pixels/second
+    const int jump_velocity = -600;
     bool in_the_air{}; // Braced initialization defaults to a false value
 
     // Initializing window
@@ -31,7 +28,6 @@ int main (){
     Vector2 character_position;
     character_position.x = window_width/2 - character_hitbox.width/2;
     character_position.y = window_height - character_hitbox.height;
-
 
     SetTargetFPS(60);
     while (!WindowShouldClose()){
