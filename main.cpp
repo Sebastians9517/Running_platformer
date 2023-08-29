@@ -5,6 +5,11 @@ int main (){
     const int window_width = 1280;
     const int window_height = 720;
 
+    // Importing and setting up character sprite hitbox dimensions and position in map
+    Texture2D character = LoadTexture ("C:\Users\Sebastian\GameDev\Dapper_dasher\textures\scarfy.png");
+    Rectangle character_hitbox;
+    Vector2 character_position;
+
     // Rectangle dimensions
     const int rectangle_width = 50;
     const int rectangle_height = 80;
