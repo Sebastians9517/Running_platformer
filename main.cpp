@@ -34,13 +34,15 @@ int main (){
         // Initializing canvas
         BeginDrawing();
         ClearBackground(WHITE);
+        // Delta time (time since last frame), to keep character moving at a set velocity regardless of fps rate
+        const float delta_time = (GetFrameTime());
         // Ensuring we are not already at ground level
         if((character_position.y >= window_height - character_hitbox.height)){
             velocity = 0;
             in_the_air = false;
         } else { 
             //if we are above ground level, gravity will take us back to the ground
-            velocity += gravity;
+            velocity += (gravity*delta_time);
             in_the_air = true;
         }
         
@@ -50,7 +52,7 @@ int main (){
         } 
 
         // Updating position
-        character_position.y += velocity;
+        character_position.y += (velocity*delta_time);
         
         DrawTextureRec(character, character_hitbox, character_position, WHITE);
         EndDrawing();
